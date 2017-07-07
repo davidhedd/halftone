@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.halftone.halftone.layout.UploadFragment">
-
+	
+	<!-- display text to inform the user whether the image was successfully taken/selected -->
     <TextView
         android:id="@+id/photoBitmapLabel"
         android:layout_width="225dp"
@@ -14,7 +15,8 @@
         android:fontFamily="casual"
         android:textAlignment="textStart"
         android:textSize="18sp" />
-
+	
+	<!-- display text to hint user to update location using google maps places API -->
     <TextView
         android:id="@+id/locationLabel"
         android:layout_width="250dp"
@@ -24,7 +26,8 @@
         android:fontFamily="casual"
         android:textAlignment="textStart"
         android:textSize="18sp" />
-
+	
+	<!-- View to show tags added by the user -->
     <TextView
         android:id="@+id/showTags"
         android:layout_width="250dp"
@@ -35,12 +38,15 @@
         android:textAlignment="textStart"
         android:textSize="13sp"
         android:visibility="visible" />
+
+	<!-- to stop the single edit text box stealing focus on the line -->
     <LinearLayout
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_width="0px"
         android:layout_height="0px"/>
-
+	
+	<!-- view to inform the user to add tags for their images -->
     <EditText
         android:id="@+id/tagLabels"
         android:layout_width="200dp"
@@ -58,6 +64,7 @@
         android:layout_below="@+id/addTagsLabel"
         android:layout_alignStart="@+id/addTagsLabel" />
 
+	<!-- view to inform the user to take/upload a photo -->
     <TextView
         android:id="@+id/addPhotoLabel"
         android:layout_width="225dp"
@@ -72,6 +79,7 @@
         android:textColor="@color/headerColor"
         android:textSize="18sp" />
 
+	<!-- add from gallery icon -->
     <ImageView
         android:id="@+id/addFromGallery"
         android:layout_width="50dp"
@@ -80,6 +88,7 @@
         android:layout_alignTop="@+id/addPhotoIcon"
         android:layout_alignEnd="@+id/addPostButton" />
 
+	<!-- add from camera icon -->
     <ImageView
         android:id="@+id/addPhotoIcon"
         android:layout_width="50dp"
@@ -89,7 +98,8 @@
         android:layout_marginEnd="26dp"
         android:layout_above="@+id/photoBitmapLabel"
         android:layout_toStartOf="@+id/addFromGallery" />
-
+	
+	<!-- add tags icon -->
     <ImageView
         android:id="@+id/addTagsIcon"
         android:layout_width="50dp"
@@ -99,6 +109,7 @@
         android:layout_toEndOf="@+id/photoBitmapLabel"
         android:layout_marginStart="12dp" />
 
+	<!-- view to display tags from user -->
     <TextView
         android:id="@+id/addTagsLabel"
         android:layout_width="250dp"
@@ -112,6 +123,7 @@
         android:layout_alignStart="@+id/addPhotoLabel"
         android:layout_toStartOf="@+id/addPhotoIcon" />
 
+	<!-- view to show the location origin of the photo -->
     <TextView
         android:id="@+id/updateLocationLabel"
         android:layout_width="250dp"
@@ -124,6 +136,7 @@
         android:layout_below="@+id/showTags"
         android:layout_alignStart="@+id/showTags" />
 
+	<!-- map icon -->
     <ImageView
         android:id="@+id/updateLocationIcon"
         android:layout_width="50dp"
@@ -131,7 +144,8 @@
         app:srcCompat="@android:drawable/ic_menu_mylocation"
         android:layout_alignTop="@+id/updateLocationLabel"
         android:layout_alignStart="@+id/addTagsIcon" />
-
+	
+	<!-- upload post button -->
     <Button
         android:id="@+id/addPostButton"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -147,4 +161,5 @@
         android:textAllCaps="false"
         android:textColor="@color/headerBack"
         android:textStyle="bold" />
+
 </RelativeLayout>
