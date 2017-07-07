@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Halftone</string>
+    <string name="title_upload">Upload</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_explore">ExploreActivity</string>
+    <string name="title_activity_testttt">testttt</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="add_photo_label">Add your pic:</string>
+    <string name="add_tags_label">Add your tags:</string>
+    <string name="add_location_label">Update your location:</string>
+    <string name="upload_button">Add Post</string>
+    <string name="input_padding">20</string>
+
+    <string name="halftone_logo_text">halftone</string>
+    <string name="login_email_text">Email</string>
+    <string name="login_password_text">Password</string>
+    <string name="register_email_text">Email</string>
+    <string name="register_password_text">Password</string>
+    <string name="register_re_password_text">Retype Password</string>
+    <string name="login_button_text">LOGIN</string>
+    <string name="login_register_text">Sign up</string>
+    <string name="register_button_text">CREATE ACCOUNT</string>
+    <string name="register_login_text">Have an account already? LOGIN</string>
+    <string name="register_username_text">Username</string>
+
+</resources>

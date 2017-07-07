@@ -1,0 +1,150 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.halftone.halftone.layout.UploadFragment">
+
+    <TextView
+        android:id="@+id/photoBitmapLabel"
+        android:layout_width="225dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/addPhotoLabel"
+        android:layout_below="@+id/addPhotoLabel"
+        android:fontFamily="casual"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/updateLocationLabel"
+        android:layout_below="@+id/updateLocationLabel"
+        android:fontFamily="casual"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/showTags"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tagLabels"
+        android:layout_below="@+id/addTagsIcon"
+        android:fontFamily="casual"
+        android:textAlignment="textStart"
+        android:textSize="13sp"
+        android:visibility="visible" />
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
+    <EditText
+        android:id="@+id/tagLabels"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/form_field"
+        android:fontFamily="casual"
+        android:padding="5dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/headerColor"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:textSize="18sp"
+        android:visibility="visible"
+        android:layout_below="@+id/addTagsLabel"
+        android:layout_alignStart="@+id/addTagsLabel" />
+
+    <TextView
+        android:id="@+id/addPhotoLabel"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="39dp"
+        android:fontFamily="casual"
+        android:text="@string/add_photo_label"
+        android:textAlignment="textStart"
+        android:textColor="@color/headerColor"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/addFromGallery"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        android:layout_alignTop="@+id/addPhotoIcon"
+        android:layout_alignEnd="@+id/addPostButton" />
+
+    <ImageView
+        android:id="@+id/addPhotoIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="26dp"
+        android:layout_above="@+id/photoBitmapLabel"
+        android:layout_toStartOf="@+id/addFromGallery" />
+
+    <ImageView
+        android:id="@+id/addTagsIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:layout_alignTop="@+id/tagLabels"
+        android:layout_toEndOf="@+id/photoBitmapLabel"
+        android:layout_marginStart="12dp" />
+
+    <TextView
+        android:id="@+id/addTagsLabel"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="casual"
+        android:text="@string/add_tags_label"
+        android:textColor="@color/headerColor"
+        android:textSize="18sp"
+        android:layout_below="@+id/addPhotoLabel"
+        android:layout_alignStart="@+id/addPhotoLabel"
+        android:layout_toStartOf="@+id/addPhotoIcon" />
+
+    <TextView
+        android:id="@+id/updateLocationLabel"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:fontFamily="casual"
+        android:text="@string/add_location_label"
+        android:textSize="18sp"
+        android:textColor="@color/headerColor"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/showTags"
+        android:layout_alignStart="@+id/showTags" />
+
+    <ImageView
+        android:id="@+id/updateLocationIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
+        android:layout_alignTop="@+id/updateLocationLabel"
+        android:layout_alignStart="@+id/addTagsIcon" />
+
+    <Button
+        android:id="@+id/addPostButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="33dp"
+        android:background="@color/textColor"
+        android:fontFamily="casual"
+        android:text="@string/upload_button"
+        android:textAllCaps="false"
+        android:textColor="@color/headerBack"
+        android:textStyle="bold" />
+</RelativeLayout>
