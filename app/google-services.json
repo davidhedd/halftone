@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "44344249190",
+    "firebase_url": "https://halftone-bdd6d.firebaseio.com",
+    "project_id": "halftone-bdd6d",
+    "storage_bucket": "halftone-bdd6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44344249190:android:8b0a2a1430163f4d",
+        "android_client_info": {
+          "package_name": "com.halftone.halftone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44344249190-ctv6uldjefmdphcbmlu76ahov2sah433.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.halftone.halftone",
+            "certificate_hash": "501af7608c24492b67ddbf5c17cca1b06ad3041c"
+          }
+        },
+        {
+          "client_id": "44344249190-fk4q3m36juo4p17llc19skcrmobn95hu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC51mzHkvAXtBQZ706fERG-9xhCsbie2cU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44344249190-fk4q3m36juo4p17llc19skcrmobn95hu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
