@@ -34,9 +34,7 @@ Android technologies / features researched, not yet implemented:
 	GSON
 	Common gestures(swipe)
 
-
 External References:
-
 	General Layout/Design
 		https://developer.android.com/training/best-ui.html
 		https://www.codeproject.com/articles/895942/custom-android-navigation-drawer
