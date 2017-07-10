@@ -1,0 +1,63 @@
+# halftone - photo app for professional photographers #
+
+Description:
+	Photography mobile app based on geotagging images/photos, aimed specifically towards professional photographers.
+	It allows users to search for snaps based on geographic location and filter based on attributes such tags and date/time.
+
+Features(Implemented):
+	User login
+	User registration
+	Take photo
+	Like/Unlike other users photos
+	Display a users liked photos(list of ids)
+
+Features(Future Releases):
+	Choose image from gallery
+	Tag photo location
+	Show images based on a geographical location input
+	Filtering based on tags or location
+	Customise photo location
+	Display photo data(username, location, date taken, tags...)
+	Display likes in editable view(view / unlike), with image thumbnail and basic details
+	Swipe between content screens
+	Swipe like/unlike photos
+	Search for specific user / tags...
+
+Android technologies / features used:
+	Firebase -> Authentication / Real time database
+	Activities
+	Fragments
+	General android layout/design principles
+
+Android technologies / features researched, not yet implemented:
+	Google places API
+	GSON
+	Common gestures(swipe)
+
+
+External References:
+
+	General Layout/Design
+		https://developer.android.com/training/best-ui.html
+		https://www.codeproject.com/articles/895942/custom-android-navigation-drawer
+		https://code.tutsplus.com/tutorials/android-user-interface-design-layout-basics--mobile-3671
+		https://developer.android.com/training/index.html
+		https://developer.android.com/training/gestures/detector.html
+
+	Firebase / User management
+		https://www.simplifiedcoding.net/android-studio-volley-tutorial-to-create-a-login-application/
+		https://www.androidtutorialpoint.com/firebase/android-firebase-authentication-tutorial-using-firebase-google-login/
+		https://firebase.google.com/docs/database/android/read-and-write
+		https://github.com/googlesamples/android-DisplayingBitmaps/#readme
+		https://stackoverflow.com/questions/42228445/query-firebase-database-with-two-between-conditions
+
+		
+	Google Places API
+		http://karnshah8890.blogspot.ie/2013/03/google-places-api-tutorial.html
+		https://www.youtube.com/watch?v=-n9qE7j2GkU
+		https://www.studytutorial.in/android-google-places-api-tutorial-to-search-google-places
+		https://code.tutsplus.com/articles/google-play-services-using-the-places-api--cms-23715
+
+	Location
+		http://javapapers.com/android/get-current-location-in-android/
+		https://developers.google.com/places/android-api/current-place
