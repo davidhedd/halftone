@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.halftone.halftone.layout.ExploreFragment">
+
+    <ImageView
+        android:id="@+id/postImage"
+        android:layout_width="340dp"
+        android:layout_height="320dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/halftone_logo" />
+
+    <ImageView
+        android:id="@+id/nah"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:srcCompat="@drawable/ic_close_light"
+        android:layout_below="@+id/postImage"
+        android:layout_toStartOf="@+id/yes"
+        android:layout_marginEnd="44dp"
+        android:layout_marginTop="21dp" />
+
+    <ImageView
+        android:id="@+id/yes"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:srcCompat="@android:drawable/star_big_off"
+        android:layout_marginEnd="73dp"
+        android:layout_alignTop="@+id/nah"
+        android:layout_alignEnd="@+id/postImage" />
+
+</RelativeLayout>

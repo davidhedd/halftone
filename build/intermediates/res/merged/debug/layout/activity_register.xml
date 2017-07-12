@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/headerBack"
+    tools:context="com.halftone.halftone.users.RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:fontFamily="cursive"
+            android:gravity="center_vertical"
+            android:text="@string/halftone_logo_text"
+            android:textAlignment="center"
+            android:textColor="@color/headerColor"
+            android:textSize="60sp"
+            android:textStyle="italic" />
+        <!--<ImageView
+            android:id="@+id/imageView"
+            android:layout_width="148dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:textColor="@color/headerColor"
+            app:srcCompat="@drawable/logo" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/headerLayout"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/loginButton">
+
+        <EditText
+            android:id="@+id/regUsernameField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/regEmailField"
+            android:layout_below="@+id/header"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/form_field"
+            android:fontFamily="casual"
+            android:hint="@string/register_username_text"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:textColor="@color/headerColor"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/regEmailField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/passwordField"
+            android:layout_below="@+id/regUsernameField"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/form_field"
+            android:fontFamily="casual"
+            android:hint="@string/register_email_text"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:textColor="@color/headerColor"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/regPasswordField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/regEmailField"
+            android:layout_below="@+id/regEmailField"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/form_field"
+            android:fontFamily="casual"
+            android:hint="@string/register_password_text"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:textColor="@color/headerColor"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/regRePasswordField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/regPasswordField"
+            android:layout_below="@+id/regPasswordField"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/form_field"
+            android:fontFamily="casual"
+            android:hint="@string/register_re_password_text"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:textColor="@color/headerColor"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/registerButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/loginButton"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:background="@color/textColor"
+            android:fontFamily="casual"
+            android:text="@string/register_button_text"
+            android:textColor="@color/headerBack"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/custom_register_button"
+        android:fontFamily="casual"
+        android:text="@string/register_login_text"
+        android:textAllCaps="false"
+        android:textColor="@color/headerColor"
+        android:textStyle="bold" />
+</RelativeLayout>

@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.halftone.halftone.layout.UploadFragment">
+
+    <TextView
+        android:id="@+id/photoBitmapLabel"
+        android:layout_width="225dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/addPhotoLabel"
+        android:layout_below="@+id/addPhotoLabel"
+        android:fontFamily="casual"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:fontFamily="casual"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_toEndOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal" />
+
+    <EditText
+        android:id="@+id/tagLabels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/addTagsLabel"
+        android:background="@color/tagBackgroundColor"
+        android:fontFamily="casual"
+        android:hint="eg. #scenic #love"
+        android:maxLines="5"
+        android:padding="15dp"
+        android:textColor="@color/tagTextColor"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/addPhotoLabel"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="36dp"
+        android:fontFamily="casual"
+        android:paddingLeft="20dp"
+        android:text="@string/add_photo_label"
+        android:textAlignment="textStart"
+        android:textColor="@color/headerColor"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/addFromGallery"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/addPhotoIcon"
+        android:layout_below="@+id/addPhotoLabel"
+        android:layout_marginStart="34dp"
+        android:layout_toEndOf="@+id/addPhotoIcon"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <ImageView
+        android:id="@+id/addPhotoIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_below="@+id/addPhotoLabel"
+        android:layout_alignEnd="@+id/photoBitmapLabel"
+        android:layout_marginEnd="39dp" />
+
+    <ImageView
+        android:id="@+id/addTagsIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignTop="@+id/tagLabels"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/photoBitmapLabel"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <TextView
+        android:id="@+id/addTagsLabel"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:fontFamily="casual"
+        android:paddingLeft="20dp"
+        android:text="@string/add_tags_label"
+        android:textColor="@color/headerColor"
+        android:textSize="25sp"
+        android:layout_below="@+id/addFromGallery"
+        android:layout_toEndOf="@+id/linearLayout"
+        android:layout_marginTop="49dp" />
+
+    <Button
+        android:id="@+id/addPostButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/textColor"
+        android:fontFamily="casual"
+        android:text="@string/upload_button"
+        android:textAllCaps="false"
+        android:minLines="2"
+        android:textColor="@color/headerBack"
+        android:textStyle="bold"
+        android:layout_marginTop="69dp"
+        android:layout_below="@+id/tagLabels"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

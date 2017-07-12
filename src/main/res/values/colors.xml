@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="registerBtnColor">#177654</color>
+    <color name="backgroundColor">#636161</color>
+    <color name="textColor">#7cd6b6</color>
+    <color name="headerColor">#2da77b</color>
+    <color name="headerBack">#fbf6ea</color>
+    <color name="tagBackgroundColor">#daf2e9</color>
+    <color name="tagTextColor">#30936e</color>
+</resources>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\logo.png",
+        "source": "C:\\Code\\Android\\Halftone\\app\\src\\main\\res\\drawable-xxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\halftone_image.png",
+        "source": "C:\\Code\\Android\\Halftone\\app\\src\\main\\res\\drawable-xxhdpi\\halftone_image.png"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\halftone.png",
+        "source": "C:\\Code\\Android\\Halftone\\app\\src\\main\\res\\drawable-xxhdpi\\halftone.png"
+    }
+]

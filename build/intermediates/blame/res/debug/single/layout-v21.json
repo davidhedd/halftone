@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\david\\.android\\build-cache\\fb356dee6d1a30e71348fea4c107a75ae4272fc9\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\david\\.android\\build-cache\\fb356dee6d1a30e71348fea4c107a75ae4272fc9\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\david\\.android\\build-cache\\fb356dee6d1a30e71348fea4c107a75ae4272fc9\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\place_autocomplete_fragment.xml",
+        "source": "C:\\Users\\david\\.android\\build-cache\\9902b0150db66ad7a489ecfe8b6a01cd06ab98a6\\output\\res\\layout-v21\\place_autocomplete_fragment.xml"
+    },
+    {
+        "merged": "C:\\Code\\Android\\Halftone\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\david\\.android\\build-cache\\fb356dee6d1a30e71348fea4c107a75ae4272fc9\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]

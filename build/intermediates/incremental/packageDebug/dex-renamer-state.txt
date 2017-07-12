@@ -1,0 +1,7 @@
+#Mon Jul 10 00:11:37 BST 2017
+base.0=C\:\\Code\\Android\\Halftone\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_75e78e0f9b5b50bebeaeec81adae73dc60fec596
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Code\\Android\\Halftone\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_0878b9b2535b5c302beb4aa6d11fd8b6b1244b86\\classes.dex
+base.1=C\:\\Code\\Android\\Halftone\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_0878b9b2535b5c302beb4aa6d11fd8b6b1244b86
+file.0=C\:\\Code\\Android\\Halftone\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_75e78e0f9b5b50bebeaeec81adae73dc60fec596\\classes.dex

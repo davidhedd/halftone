@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">44344249190-fk4q3m36juo4p17llc19skcrmobn95hu.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://halftone-bdd6d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">44344249190</string>
+    <string name="google_api_key" translatable="false">AIzaSyC51mzHkvAXtBQZ706fERG-9xhCsbie2cU</string>
+    <string name="google_app_id" translatable="false">1:44344249190:android:8b0a2a1430163f4d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC51mzHkvAXtBQZ706fERG-9xhCsbie2cU</string>
+    <string name="google_storage_bucket" translatable="false">halftone-bdd6d.appspot.com</string>
+</resources>
