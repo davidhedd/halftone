@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                                 selectedFragment = ExploreFragment.newInstance();
                                 break;
                             case R.id.navigation_profile:
-                                // selectedFragment = ProfileFragment.newInstance();
-                                return true;
+                                selectedFragment = LikesFragment.newInstance();
+                                break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout, selectedFragment);

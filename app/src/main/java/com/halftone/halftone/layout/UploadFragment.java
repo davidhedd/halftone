@@ -1,17 +1,24 @@
 package com.halftone.halftone.layout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,14 +30,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.halftone.halftone.R;
 import com.halftone.halftone.content.Post;
 import com.halftone.halftone.content.PostImage;
 import com.halftone.halftone.content.Tag;
+import com.halftone.halftone.users.Username;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +59,20 @@ public class UploadFragment extends Fragment implements LocationListener {
     private LocationManager locationManager;
 
     private String imageBitmapLink = "";
+    private String hashtagString;
+    private List<String> hashtags;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private TextView imageBitmapLabel;
-    private ImageView addPhotoIcon, addTagsIcon;
+    private ImageView addPhotoIcon;
     private Button addPostButton;
-    private EditText addTags;
+    private EditText tagLabels;
 
     private boolean takingPhoto;
 
     private View myView;
+
+    //List<String> hashtagStorage;
 
     private int postCounter = 0;
     private int PICK_IMAGE_REQUEST = 1;
@@ -88,45 +105,38 @@ public class UploadFragment extends Fragment implements LocationListener {
             }
         });
 
-        addTagsIcon = (ImageView) myView.findViewById(R.id.addTagsIcon);
-        addTagsIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchGallery();
-            }
-        });
+        // Allow user to select photo from gallery
 
-        addTags = (EditText) myView.findViewById(R.id.tagLabels);
-        addTags.setSelected(false);
+        // Edit text view for the user to input the tags for this photo
+        tagLabels = (EditText) myView.findViewById(R.id.tagLabels);
+        tagLabels.setSelected(false);
 
+        // Validation for the input tags text box
+        checkForTags();
+
+        // functionality for the upload post button
         addPostButton = (Button) myView.findViewById(R.id.addPostButton);
         addPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!imageBitmapLabel.getText().equals("")) {
+                if (!imgDecodableString.equals("")) {
+                    System.out.println("here");
                     DatabaseReference postDR = databaseReference.child("Posts");
                     DatabaseReference postImageDR = databaseReference.child("PostImages").child(firebaseAuth.getCurrentUser().getUid());
+                    DatabaseReference tagsDR = databaseReference.child("Tags");
 
                     DatabaseReference postDR1 = postDR.push();
                     DatabaseReference postImageDR1 = postImageDR.push();
+                    DatabaseReference tagsDR1 = tagsDR.push();
 
-                    List<Tag> tags = new ArrayList<Tag>();
-                    tags.add(new Tag(1, "Test tag 1"));
-                    tags.add(new Tag(2, "Test tag 2"));
-                    tags.add(new Tag(3, "Test tag 3"));
                     Post post = new Post(
-                            ++postCounter,
-                            firebaseAuth.getCurrentUser(),
-                            "Test post",
-                            "This is a sample post.",
-                            "lat",
-                            "lng",
-                            tags,
-                            4
+                            firebaseAuth.getCurrentUser().getUid(),
+                            /*getUsername(),*/
+                            hashtags
                     );
                     PostImage postImage = new PostImage(
                             post,
-                            imageBitmapLabel.getText().toString()
+                            imgDecodableString
                     );
                     postDR1.setValue(post);
                     postImageDR1.setValue(postImage);
@@ -137,33 +147,14 @@ public class UploadFragment extends Fragment implements LocationListener {
 
         try {
             if (MainActivity.welcomeMessage <= 1) {
-                if (firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().getEmail().toLowerCase().contains("kristina")) {
-                    Toast.makeText(getActivity(), "Hello Kristina", Toast.LENGTH_LONG).show();
-                } else {
+                getUsername();
+                /*
                     Toast.makeText(getActivity(), "Welcome back " + firebaseAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
-                }
+                */
             }
         } catch (NullPointerException npe) {
             System.out.println("aw oh null pointer");
         }
-
-        /*addTagsView = (ImageView) myView.findViewById(R.id.addTagsIcon);
-        addTagsView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-                String[] colors = {"red", "yellow", "green"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("hello")
-                        .setItems(colors, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // The 'which' argument contains the index position
-                                // of the selected item
-                            }
-                        });
-                builder.create();
-            }
-        });*/
 
         locationManager = (LocationManager) getContext()
                 .getSystemService(LOCATION_SERVICE);
@@ -173,58 +164,49 @@ public class UploadFragment extends Fragment implements LocationListener {
         return myView;
     }
 
-    public List<String> convertToTags(String input){
+    String username = "";
+
+    public String getUsername(){
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Usernames");
+        myRef.addValueEventListener(new ValueEventListener() {
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    if( postSnapshot.getKey().equals( firebaseAuth.getCurrentUser().getUid() ) ) {
+                        Username u = postSnapshot.getValue(Username.class);
+                        username = u.getUsername();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+        return "";
+    }
+
+    public void convertToTags(String input){
+        if( !input.contains("#") ){
+            return;
+        }
         String[] tempHashtags = input.split("#");
         List<String> hashtags = new ArrayList<>();
         for( int i=0; i<tempHashtags.length; i++ ){
             tempHashtags[i] = tempHashtags[i].replace(" ", "");
             if( !tempHashtags[i].equals("") ){
                 hashtags.add( tempHashtags[i] );
+                hashtagString += tempHashtags[i].replace(" ", "") + " ";
             }
         }
-        return hashtags;
+        String hash = "";
+        for( String hashtag : hashtags ){
+            hash += "#" + hashtag + " ";
+        }
     }
-
-
 
     private boolean isLocationEnabled() {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && takingPhoto) {
-                Bundle extras = data.getExtras();
-                Bitmap imageBitmap = (Bitmap) extras.get("data");
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                // imageBitmapLink = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
-                imageBitmapLabel.setText(Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
-        }
-        try {
-            // When an Image is picked
-            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-                Cursor cursor = getContext().getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-
-                decodeFile(picturePath);
-            } else {
-                System.out.println("");
-            }
-        } catch (Exception e) {
-            System.out.println("");
-        }
-    }
     /** The method decodes the image file to avoid out of memory issues. Sets the
      * selected image in to the ImageView.
      *
@@ -256,7 +238,7 @@ public class UploadFragment extends Fragment implements LocationListener {
         o2.inSampleSize = scale;
         Bitmap bitmap = BitmapFactory.decodeFile(filePath, o2);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        //bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         imageBitmapLink = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
         // imageBitmapLabel.setText(imageBitmapLink);
         System.out.println(imageBitmapLink);
@@ -278,20 +260,79 @@ public class UploadFragment extends Fragment implements LocationListener {
         }
     }
 
+    public void checkForTags(){
+        TextWatcher fieldValidatorTextWatcher = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Check if user has typed a space
+                // If they have put a hash symbol
+                convertToTags(s.toString());
+            }
+        };
+        tagLabels.addTextChangedListener(fieldValidatorTextWatcher);
+    }
+
+    Bitmap bitmap = null;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode==RESULT_OK) {
+            bitmap = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            imgDecodableString = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+            System.out.println("here:" + imgDecodableString);
+        }
+
+        /*try {
+            // When an Image is picked
+            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+
+                decodeFile(picturePath);
+            } else {
+                System.out.println("");
+            }
+        } catch (Exception e) {
+            System.out.println("");
+        }*/
+    }
+
     public void launchCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+        if (takePictureIntent.resolveActivity(getContext().getPackageManager()) != null) {
+            System.out.println("going to take photo     ");
             takingPhoto = true;
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
 
     public void launchGallery(){
-        // Create intent to Open Image applications like Gallery, Google Photos
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        // Start the Intent
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);//
+        startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_IMAGE_REQUEST);
     }
 
     @Override
@@ -314,4 +355,18 @@ public class UploadFragment extends Fragment implements LocationListener {
 
     }
 
+    /*@SuppressWarnings("deprecation")
+    private void onSelectFromGalleryResult(Intent data) {
+
+        Bitmap bitmap=null;
+        if (data != null) {
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), data.getData());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        String b = getBitmapToString( bitmap );
+    }
+*/
 }
