@@ -128,7 +128,7 @@ public class ExploreFragment extends Fragment {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     if( !postSnapshot.getKey().equals( firebaseAuth.getCurrentUser().getUid() ) ){
                         for( DataSnapshot snap : postSnapshot.getChildren() ){
-                            postBitmaps.add(postSnapshot.getValue(PostImage.class));
+                            postBitmaps.add(snap.getValue(PostImage.class));
                         }
                     }
                 }
